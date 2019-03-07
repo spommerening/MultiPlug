@@ -1,3 +1,10 @@
 name: MultiPlug
 version: "0.1"
 main: de.wumato.MultiPlug.MultiPlug
+description: Provides several actions and services for play.wumato.de
+authors: [wumato]
+commands:
+  multiplug:
+    description: Invokes different multiplug actions
+    usage: /<command> [action]
+    aliases: [mp]
