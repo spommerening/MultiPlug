@@ -1,5 +1,6 @@
 package de.wumato.MultiPlug;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,10 +13,12 @@ public class MultiPlug extends JavaPlugin {
 
     private FileConfiguration config;
     private PluginDescriptionFile info = this.getDescription();
+    private int announcementTaskId;
 
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new PlayerLoginListener(this), this);
+        announcementTimer();
 
         saveDefaultConfig();     // copy config.yml from jar to plugin data directory (if file does not exist)
         reloadConfiguration();   // reload configuration from config.yml in plugin data directory
@@ -31,6 +34,10 @@ public class MultiPlug extends JavaPlugin {
 
     private void reloadConfiguration() {
         reloadConfig();
+
+        // Restart announcementTask using possible new timer value
+        this.getServer().getScheduler().cancelTask(announcementTaskId);
+        announcementTimer();
     }
 
     @Override
@@ -53,10 +60,29 @@ public class MultiPlug extends JavaPlugin {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("MOTD")));
                 return true;
             }
+            if (args[0].equalsIgnoreCase("announcement")) {
+                player.sendMessage(ChatColor.GREEN + "MultiPlug Announcement message:");
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("announcement.message")));
+                return true;
+            }
             player.sendMessage(ChatColor.RED + "Action unknown to MultiPlug!");
             return false;
         } else {
             return false;
         }
+    }
+
+    private void announcementTimer() {
+        int ticks = getConfig().getInt("announcement.minutes") * 60 * 20;   // 20 ticks per second
+
+        announcementTaskId = this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+            public void run() {
+
+                getLogger().info("AnnouncementTimer triggered");
+                for(Player player : Bukkit.getServer().getOnlinePlayers()) {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("announcement.message")));
+                }
+            }
+        }, ticks, ticks);
     }
 }
