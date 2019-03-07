@@ -6,3 +6,9 @@ MOTD: |
   &f=====================================================
   &c MultiPlug MOTD Sample
   &f=====================================================
+
+announcement:
+  message: |
+    &eThis is an announcement sample:
+    &eIt can consist of multiple lines.
+  minutes: 30
