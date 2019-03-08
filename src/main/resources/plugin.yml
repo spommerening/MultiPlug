@@ -1,23 +1,32 @@
+# This is MultiPlug's plugin.yml
+# For more information refer to http://wiki.bukkit.org/Plugin_YAML
+# This file uses maven resource filtering to fill in values at compile time
 name: ${project.name}
 version: ${project.version}
 main: de.wumato.MultiPlug.MultiPlug
 description: ${project.description}
 authors: [wumato]
+api-version: 1.13
 commands:
-  multiplug:
+  mp:
     description: Invokes different multiplug actions
     usage: /<command> [action]
-    aliases: [mp]
 permissions:
-  multiplug.motd:
-    description: Display current message of the day
-  multiplug.announcement:
-    description: Display current announcement text
-  multiplug.reload:
-    description: Reload MultiPlug configuration
-  multiplug.*:
+  mp.*:
     description: Gives access to all non-admin actions
     default: op
     children:
-      multiplug.motd: true
-      multiplug.announcement: true
+      mp.motd: true
+      mp.announcement: true
+      mp.version: true
+      mp.ores: true
+  mp.motd:
+    description: Display current message of the day
+  mp.announcement:
+    description: Display current announcement text
+  mp.version:
+    description: Display MultiPlug version
+  mp.ores:
+    description: Display list of ores found nearby the player
+  mp.reload:
+    description: Reload MultiPlug configuration
