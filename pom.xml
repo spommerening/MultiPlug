@@ -6,7 +6,9 @@
 
     <groupId>de.wumato</groupId>
     <artifactId>MultiPlug</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.11-SNAPSHOT</version>
+    <name>MultiPlug</name>
+    <description>Provides several actions and services for play.wumato.de</description>
 
 
     <build>

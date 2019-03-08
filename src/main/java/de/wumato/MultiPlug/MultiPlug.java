@@ -50,9 +50,14 @@ public class MultiPlug extends JavaPlugin {
                 return false;
             }
             if (args[0].equalsIgnoreCase("reload")) {
-                getLogger().info("Reloading configuration");
-                reloadConfiguration();
-                player.sendMessage(ChatColor.GREEN + "Configuration reloaded");
+                if (player.hasPermission("multiplug.reload")) {
+                    getLogger().info("Reloading configuration");
+                    reloadConfiguration();
+                    player.sendMessage(ChatColor.GREEN + "Configuration reloaded");
+                }
+                else {
+                    player.sendMessage(ChatColor.RED + "No, you don't have permission.");
+                }
                 return true;
             }
             if (args[0].equalsIgnoreCase("motd")) {
