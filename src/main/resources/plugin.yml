@@ -1,10 +1,23 @@
-name: MultiPlug
-version: "0.1"
+name: ${project.name}
+version: ${project.version}
 main: de.wumato.MultiPlug.MultiPlug
-description: Provides several actions and services for play.wumato.de
+description: ${project.description}
 authors: [wumato]
 commands:
   multiplug:
     description: Invokes different multiplug actions
     usage: /<command> [action]
     aliases: [mp]
+permissions:
+  multiplug.motd:
+    description: Display current message of the day
+  multiplug.announcement:
+    description: Display current announcement text
+  multiplug.reload:
+    description: Reload MultiPlug configuration
+  multiplug.*:
+    description: Gives access to all non-admin actions
+    default: op
+    children:
+      multiplug.motd: true
+      multiplug.announcement: true
