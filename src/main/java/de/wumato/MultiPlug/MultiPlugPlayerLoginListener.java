@@ -5,11 +5,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class PlayerLoginListener implements Listener {
+public class MultiPlugPlayerLoginListener implements Listener {
 
     private MultiPlug plugin;
 
-    PlayerLoginListener(MultiPlug instance) {
+    MultiPlugPlayerLoginListener(MultiPlug instance) {
         this.plugin = instance;
     }
 

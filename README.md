@@ -16,18 +16,22 @@ Another approach on building a minecraft plugin.
 
 ## Commands
 
-`/multiplug announcement`
+`/mp announcement`
 
 * Display announcement message.<br />
 The announcement message is continously repeated every X minutes (configurable).
 
-`/multiplug motd`
+`/mp motd`
 
 * Display MOTD (Message Of The Day).
 
-`/multiplug reload`
+`/mp ores`
 
-* Reload (update) config.yml from plugin directory. Also restarts the announcement message timer.
+* Displays a list of ores within a certain radius nearby the player.
+
+`/mp reload`
+
+* Reload (update) config.yml from plugin directory. Also restarts the announcement message timer. (Permission node mp.reload)
 
 ## Authors
 

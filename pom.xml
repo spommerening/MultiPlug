@@ -6,10 +6,14 @@
 
     <groupId>de.wumato</groupId>
     <artifactId>MultiPlug</artifactId>
-    <version>0.11-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
     <name>MultiPlug</name>
     <description>Provides several actions and services for play.wumato.de</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <build>
         <resources>

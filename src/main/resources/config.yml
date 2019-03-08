@@ -12,3 +12,6 @@ announcement:
     &eThis is an announcement sample:
     &eIt can consist of multiple lines.
   minutes: 30
+
+ores:
+  radius: 2
